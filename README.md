@@ -13,9 +13,9 @@ What Used
 Sample Screens
 --
 
-|screens|
-|-----|
-|<img width="475" alt="스크린샷 2021-07-16 오전 10 56 42" src="https://user-images.githubusercontent.com/74492426/125879906-ad2e5096-3e12-413d-8f5c-5da667e9e645.png">|
+|screens||
+|-----|-----|
+|<img width="475" alt="스크린샷 2021-07-16 오후 7 50 25" src="https://user-images.githubusercontent.com/74492426/125936750-3da088b4-b737-408b-af50-21ef17fe9a8f.png">|<img width="475" alt="스크린샷 2021-07-16 오후 7 51 01" src="https://user-images.githubusercontent.com/74492426/125936831-fca69a28-2805-43ac-9547-8c76abdfaa6a.png">|
 
 
 
@@ -25,10 +25,9 @@ Sample Screens
 
 To Do List
 --
-- [x] 공공기관api에서 xml데이터 받아오기
-- [x] xml데이터를 json으로 변환 후 디코딩하기
-- [x] 어제와 오늘의 변동 데이터는 제공하지 않기 때문에 직접 계산하기
-- [x] 격리해제 후 실제적으로 남은 확진자 수 계산하기 
+- [x] api로 xml데이터를 받아와 json으로 변환 후 디코딩하기
+- [x] 변동데이터 구현하기 (api에서 지원 x)
+- [ ] 날짜 선택시 해당 날의 코로나 정보 불러오기 -ing
 - [ ] 최근 일주일간의 데이터 그래프로 출력하기
 
 
