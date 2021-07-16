@@ -80,18 +80,12 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
         leading: (IconButton(
           icon: Icon(Icons.calendar_today),
           onPressed: () {
-            Future selectDate() async {
-    DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: new DateTime.now(),
-        firstDate: new DateTime(2016),
-        lastDate: new DateTime(2222));
-    if (picked != null) setState(() => picked = datepicked);
-    else{
-      print(picked);
-    }
-  }
-}
+            Future<DateTime?> selectedDate = showDatePicker(
+              context: context,
+              initialDate: DateTime.now(), // 초깃값
+              firstDate: DateTime(2020), // 시작일
+              lastDate: DateTime.now(), // 마지막일
+            );
           },
           iconSize: 30.0,
         )),
