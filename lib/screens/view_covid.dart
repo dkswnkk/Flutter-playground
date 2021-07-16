@@ -4,17 +4,20 @@ import 'package:covid19_kr/views/decideView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 class ViewCovidScreen extends StatefulWidget {
   ViewCovidScreen({this.covidData_yesterday, this.covidData_today});
 
   final dynamic covidData_today;
   final dynamic covidData_yesterday;
+
   @override
   _ViewCovidScreenState createState() => _ViewCovidScreenState();
 }
 
 class _ViewCovidScreenState extends State<ViewCovidScreen> {
+  String? upadate_time; //기준 시간
   String? today_deathCnt; //오늘 총 사망 수
   String? today_decideCnt; //오늘 총 확진자 수
   String? today_clearCnt; //오늘 누적 격리해제 수
@@ -29,10 +32,13 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   @override
   void initState() {
     updateData(widget.covidData_today, widget.covidData_yesterday);
+
     super.initState();
   }
 
   void updateData(dynamic covidData_today, dynamic covidData_yesterday) {
+    upadate_time = DateFormat('MM월 dd일').format(DateTime.now());
+    DateTime? _selectedTime;
     today_deathCnt =
         covidData_today['response']['body']['items']['item'][0]['deathCnt'];
     today_decideCnt =
@@ -59,10 +65,34 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('한국 코로나 현황'),
+        title: Column(
+          children: [
+            Text('한국 코로나 현황'),
+            Text(
+              '$upadate_time',
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
         leading: (IconButton(
-          icon: Icon(Icons.refresh),
-          onPressed: () {},
+          icon: Icon(Icons.calendar_today),
+          onPressed: () {
+            Future selectDate() async {
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2016),
+        lastDate: new DateTime(2222));
+    if (picked != null) setState(() => picked = datepicked);
+    else{
+      print(picked);
+    }
+  }
+}
+          },
           iconSize: 30.0,
         )),
       ),
