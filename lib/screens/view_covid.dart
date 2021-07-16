@@ -1,17 +1,20 @@
+import 'package:covid19_kr/views/clearView.dart';
+import 'package:covid19_kr/views/deathView.dart';
+import 'package:covid19_kr/views/decideView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class viewCovidScreen extends StatefulWidget {
-  viewCovidScreen({this.covidData_yesterday, this.covidData_today});
+class ViewCovidScreen extends StatefulWidget {
+  ViewCovidScreen({this.covidData_yesterday, this.covidData_today});
 
   final dynamic covidData_today;
   final dynamic covidData_yesterday;
   @override
-  _viewCovidScreenState createState() => _viewCovidScreenState();
+  _ViewCovidScreenState createState() => _ViewCovidScreenState();
 }
 
-class _viewCovidScreenState extends State<viewCovidScreen> {
+class _ViewCovidScreenState extends State<ViewCovidScreen> {
   String? today_deathCnt; //오늘 총 사망 수
   String? today_decideCnt; //오늘 총 확진자 수
   String? today_clearCnt; //오늘 누적 격리해제 수
@@ -22,6 +25,7 @@ class _viewCovidScreenState extends State<viewCovidScreen> {
   int? diff_decide; //확진자 수 변동
   int? diff_clear; //격리해제 변동 수
   int? real_decide; //남은확진자 = 총 확진자 - 격리해제 자
+
   @override
   void initState() {
     updateData(widget.covidData_today, widget.covidData_yesterday);
@@ -49,7 +53,6 @@ class _viewCovidScreenState extends State<viewCovidScreen> {
     diff_clear = int.parse(today_clearCnt!) -
         int.parse(yesterday_clearCnt!); //변동 격리해제자 수
     real_decide = int.parse(today_decideCnt!) - int.parse(today_clearCnt!);
-    print(real_decide);
   }
 
   @override
@@ -69,254 +72,16 @@ class _viewCovidScreenState extends State<viewCovidScreen> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 21),
-                      blurRadius: 53,
-                      color: Colors.black.withOpacity(0.05),
-                    )
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "확진자 수",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      '총 ' + "$today_decideCnt" + '명',
-                    ),
-                    SizedBox(height: 4.0),
-                    Row(
-                      children: [
-                        Text(
-                          "오늘 ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                          ),
-                        ),
-                        SvgPicture.asset(
-                          'images/Increase_Negative.svg',
-                          width: 10,
-                          height: 10,
-                        ),
-                        Text(
-                          "$diff_decide",
-                          style: TextStyle(
-                            color: Colors.redAccent,
-                          ),
-                        ),
-                        Text(
-                          "명 확진 ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+              DecideView(total: today_decideCnt, diff: diff_decide),
               SizedBox(
                 height: 10,
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 21),
-                      blurRadius: 53,
-                      color: Colors.black.withOpacity(0.05),
-                    )
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "격리해제 수",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      '총 ' + "$today_clearCnt" + '명',
-                    ),
-                    SizedBox(height: 4.0),
-                    Row(
-                      children: [
-                        Text(
-                          "오늘 ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                          ),
-                        ),
-                        SvgPicture.asset(
-                          'images/Increase_Positive.svg',
-                          width: 10,
-                          height: 10,
-                        ),
-                        Text(
-                          "$diff_clear",
-                          style: TextStyle(
-                            color: Colors.green,
-                          ),
-                        ),
-                        Text(
-                          "명 해제 ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10.0),
-                    Row(
-                      children: [
-                        Text(
-                          '남은 확진자 ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          '$real_decide',
-                          style: TextStyle(
-                            color: Colors.redAccent,
-                          ),
-                        ),
-                        Text(
-                          '명',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+              ClearView(
+                  total: today_clearCnt, diff: diff_clear, real: real_decide),
               SizedBox(
                 height: 10,
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 21),
-                      blurRadius: 53,
-                      color: Colors.black.withOpacity(0.05),
-                    )
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "사망자 수",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      '총 ' + "$today_deathCnt" + '명',
-                    ),
-                    SizedBox(height: 4.0),
-                    Row(
-                      children: [
-                        Text(
-                          "오늘 ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                          ),
-                        ),
-                        SvgPicture.asset(
-                          'images/Increase_Negative.svg',
-                          width: 10,
-                          height: 10,
-                        ),
-                        Text(
-                          "$diff_death",
-                          style: TextStyle(
-                            color: Colors.redAccent,
-                          ),
-                        ),
-                        Text(
-                          "명 사망 ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+              DeathView(total: today_deathCnt, diff: diff_death),
               SizedBox(
                 height: 280,
                 width: 200,

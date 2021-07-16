@@ -27,10 +27,10 @@ class GetCovidData {
       final covidStatusXml = response.body; //xml데이터 받아오기
       final xml2JsonData = Xml2Json()..parse(covidStatusXml); //xml을 jsom으로 변환
       final jsonData = xml2JsonData.toParker(); //형식옵션
-      print('데이터 불러오기 성공');
+      print('오늘의 데이터 불러오기 성공');
       return jsonDecode(jsonData);
     } catch (e) {
-      print('데이터 불러오기 실패');
+      print('오늘의 데이터 불러오기 실패');
     }
   }
 
@@ -46,10 +46,10 @@ class GetCovidData {
       final covidStatusXml = response.body; //xml데이터 받아오기
       final xml2JsonData = Xml2Json()..parse(covidStatusXml); //xml을 jsom으로 변환
       final jsonData = xml2JsonData.toParker(); //형식옵션
-      print('데이터 불러오기 성공');
+      print('어제의 데이터 불러오기 성공');
       return jsonDecode(jsonData);
     } catch (e) {
-      print('데이터 불러오기 실패');
+      print('어제의 데이터 불러오기 실패');
     }
   }
 }

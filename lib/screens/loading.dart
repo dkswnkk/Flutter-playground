@@ -16,7 +16,7 @@ class _LoadingState extends State<Loading> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => viewCovidScreen(
+        builder: (context) => ViewCovidScreen(
             covidData_yesterday: yesterdayCovidData,
             covidData_today: todayCovidData),
       ),
