@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:xml2json/xml2json.dart';
 
 const apiKey =
-    '';
+    'DMMWe2bJm7rS%2FA4eQ1ZQkHW1vXSFToMh0ZaOXls2ahp%2BrbGtnjMGyGZt1S7pU1oeLvViaiUUY6JGIbotsDFkCg%3D%3D';
 
 class GetCovidData {
   var today = DateTime.now();
