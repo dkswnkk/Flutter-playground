@@ -1,3 +1,4 @@
+
 한국의 코로나 현황을 알려주는 앱
 ==
 
@@ -14,7 +15,7 @@ Sample Screens
 
 |screens|
 |-----|
-|<img width="475" alt="스크린샷 2021-07-16 오전 2 42 32" src="https://user-images.githubusercontent.com/74492426/125833051-2d925d4a-d54a-49f5-a5cb-5713f592e7cc.png">|
+|<img width="475" alt="스크린샷 2021-07-16 오전 10 56 42" src="https://user-images.githubusercontent.com/74492426/125879906-ad2e5096-3e12-413d-8f5c-5da667e9e645.png">|
 
 
 
@@ -27,6 +28,7 @@ To Do List
 - [x] 공공기관api에서 xml데이터 받아오기
 - [x] xml데이터를 json으로 변환 후 디코딩하기
 - [x] 어제와 오늘의 변동 데이터는 제공하지 않기 때문에 직접 계산하기
+- [x] 격리해제 후 실제적으로 남은 확진자 수 계산하기 
 - [ ] 최근 일주일간의 데이터 그래프로 출력하기
 
 
