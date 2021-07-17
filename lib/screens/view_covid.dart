@@ -1,10 +1,11 @@
+import 'package:covid19_kr/data/getCovidData.dart';
+import 'package:covid19_kr/screens/loading.dart';
 import 'package:covid19_kr/views/clearView.dart';
 import 'package:covid19_kr/views/deathView.dart';
 import 'package:covid19_kr/views/decideView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
 
 class ViewCovidScreen extends StatefulWidget {
   ViewCovidScreen({this.covidData_yesterday, this.covidData_today});
@@ -29,6 +30,9 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   int? diff_clear; //격리해제 변동 수
   int? real_decide; //남은확진자 = 총 확진자 - 격리해제 자
 
+  GetCovidData data = GetCovidData();
+  DateTime? selectedDate;
+
   @override
   void initState() {
     updateData(widget.covidData_today, widget.covidData_yesterday);
@@ -37,8 +41,8 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   }
 
   void updateData(dynamic covidData_today, dynamic covidData_yesterday) {
-    upadate_time = DateFormat('MM월 dd일').format(DateTime.now());
-    DateTime? _selectedTime;
+    upadate_time =
+        covidData_today['response']['body']['items']['item'][0]['stateDt'];
     today_deathCnt =
         covidData_today['response']['body']['items']['item'][0]['deathCnt'];
     today_decideCnt =
@@ -61,6 +65,21 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
     real_decide = int.parse(today_decideCnt!) - int.parse(today_clearCnt!);
   }
 
+  Future<DateTime?> selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: new DateTime(2020),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() => selectedDate = picked);
+      return (picked);
+    } else {
+      return (picked);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +98,15 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
         ),
         leading: (IconButton(
           icon: Icon(Icons.calendar_today),
-          onPressed: () {
-            Future<DateTime?> selectedDate = showDatePicker(
-              context: context,
-              initialDate: DateTime.now(), // 초깃값
-              firstDate: DateTime(2020), // 시작일
-              lastDate: DateTime.now(), // 마지막일
+          onPressed: () async {
+            dynamic pickDate = await selectDate(context);
+            pickDate = pickDate.add(Duration(days: 1));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    Loading(todayDate: pickDate, yesterdayDate: pickDate),
+              ),
             );
           },
           iconSize: 30.0,

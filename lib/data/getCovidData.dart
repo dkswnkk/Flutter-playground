@@ -7,17 +7,20 @@ const apiKey =
     'DMMWe2bJm7rS%2FA4eQ1ZQkHW1vXSFToMh0ZaOXls2ahp%2BrbGtnjMGyGZt1S7pU1oeLvViaiUUY6JGIbotsDFkCg%3D%3D';
 
 class GetCovidData {
-  var today = DateTime.now();
-  var yesterday = DateTime.now().subtract(Duration(days: 1));
-
-  Future<dynamic> getTodayXmlData() async {
+  dynamic todayDate;
+  dynamic yesterdayDate;
+  Future<dynamic> getTodayXmlData(dynamic today, dynamic yesterday) async {
     if (today.hour < 10) {
       //api가 매일 09:35분에 갱신되기 때문에 그 이전 시간에는 전날의 기록을 가져온다.
-      today = DateTime.now().subtract(Duration(days: 1));
-      yesterday = DateTime.now().subtract(Duration(days: 2));
+      todayDate = today.subtract(Duration(days: 1));
+
+      yesterdayDate = today.subtract(Duration(days: 2));
+    } else {
+      todayDate = today;
+      yesterdayDate = today.subtract(Duration(days: 1));
     }
 
-    var inputDate = DateFormat('yyyyMMdd').format(today);
+    var inputDate = DateFormat('yyyyMMdd').format(todayDate);
     try {
       http.Response response = await http.get(
         Uri.parse(
@@ -34,8 +37,18 @@ class GetCovidData {
     }
   }
 
-  Future<dynamic> getYesterdayXmlData() async {
-    var inputDate = DateFormat('yyyyMMdd').format(yesterday);
+  Future<dynamic> getYesterdayXmlData(dynamic today, dynamic yesterday) async {
+    var inputDate = DateFormat('yyyyMMdd').format(yesterdayDate);
+
+    if (today.hour < 10) {
+      //api가 매일 09:35분에 갱신되기 때문에 그 이전 시간에는 전날의 기록을 가져온다.
+      today = today.subtract(Duration(days: 1));
+
+      yesterday = today.subtract(Duration(days: 2));
+    } else {
+      todayDate = today;
+      yesterdayDate = today.subtract(Duration(days: 1));
+    }
 
     try {
       http.Response response = await http.get(

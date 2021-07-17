@@ -5,6 +5,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  var today = DateTime.now();
+  var yesterday = DateTime.now().subtract(Duration(days: 1));
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Loading(),
+      home: Loading(todayDate: today, yesterdayDate: yesterday),
     );
   }
 }
