@@ -1,6 +1,7 @@
 
 
 
+
 한국의 코로나 현황을 알려주는 앱
 ==
 
@@ -17,7 +18,8 @@ Sample Screens
 
 |screens|gif|
 |-----|-----|
-|<img width="475" alt="스크린샷 2021-07-18 오전 3 47 08" src="https://user-images.githubusercontent.com/74492426/126046807-13e98007-6aee-45f4-b0e2-5f1a74863ffa.png">|<img width="475" alt="스크린샷 2021-07-18 오전 3 46 32" src="https://user-images.githubusercontent.com/74492426/126046788-3ade7298-c1d5-4ccd-9387-0620f2ec2513.png">
+|<img width="475" alt="스크린샷 2021-07-18 오전 3 47 08" src="https://user-images.githubusercontent.com/74492426/126046807-13e98007-6aee-45f4-b0e2-5f1a74863ffa.png">|![Simulator Screen Recording - iPhone 12 Pro Max - 2021-07-18 at 03 41 47](https://user-images.githubusercontent.com/74492426/126047044-79570d02-8eb0-4f56-9462-a34a8bf40ca1.gif)|
+
 
 
 
