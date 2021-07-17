@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// ignore: must_be_immutable
 class DecideView extends StatefulWidget {
   String? total; //총 확진자
   int? diff; //변동 수
@@ -16,8 +17,8 @@ class DecideView extends StatefulWidget {
 }
 
 class _DecideViewState extends State<DecideView> {
-  String? total_cnt;
-  int? diff_cnt;
+  String? totalCnt;
+  int? diffCnt;
   @override
   void initState() {
     updateData(widget.total, widget.diff);
@@ -26,8 +27,8 @@ class _DecideViewState extends State<DecideView> {
   }
 
   void updateData(dynamic total, dynamic diff) {
-    total_cnt = total;
-    diff_cnt = diff;
+    totalCnt = total;
+    diffCnt = diff;
   }
 
   @override
@@ -64,7 +65,7 @@ class _DecideViewState extends State<DecideView> {
             height: 15,
           ),
           Text(
-            '총 ' + '$total_cnt' + '명',
+            '총 ' + '$totalCnt' + '명',
           ),
           SizedBox(height: 4.0),
           Row(
@@ -82,7 +83,7 @@ class _DecideViewState extends State<DecideView> {
                 height: 10,
               ),
               Text(
-                "$diff_cnt",
+                "$diffCnt",
                 style: TextStyle(
                   color: Colors.redAccent,
                 ),

@@ -2,6 +2,7 @@ import 'package:covid19_kr/data/getCovidData.dart';
 import 'package:covid19_kr/screens/view_covid.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Loading extends StatefulWidget {
   Loading({this.todayDate, this.yesterdayDate});
   dynamic todayDate;
@@ -18,12 +19,13 @@ class _LoadingState extends State<Loading> {
         await data.getTodayXmlData(widget.todayDate, widget.yesterdayDate);
     dynamic yesterdayCovidData =
         await data.getYesterdayXmlData(widget.todayDate, widget.yesterdayDate);
+    Navigator.pop(context, 'view');
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ViewCovidScreen(
-            covidData_yesterday: yesterdayCovidData,
-            covidData_today: todayCovidData),
+            covidDataYesterday: yesterdayCovidData,
+            covidDataToday: todayCovidData),
       ),
     );
   }

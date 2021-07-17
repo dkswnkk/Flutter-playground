@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// ignore: must_be_immutable
 class DeathView extends StatefulWidget {
   String? total; //총 사망자 수
   int? diff; //변동 수
@@ -12,8 +13,8 @@ class DeathView extends StatefulWidget {
 }
 
 class _DeathViewState extends State<DeathView> {
-  String? total_cnt;
-  int? diff_cnt;
+  String? totalCnt;
+  int? diffCnt;
   @override
   void initState() {
     updateData(widget.total, widget.diff);
@@ -22,8 +23,8 @@ class _DeathViewState extends State<DeathView> {
   }
 
   void updateData(dynamic total, dynamic diff) {
-    total_cnt = total;
-    diff_cnt = diff;
+    totalCnt = total;
+    diffCnt = diff;
   }
 
   @override
@@ -60,7 +61,7 @@ class _DeathViewState extends State<DeathView> {
             height: 15,
           ),
           Text(
-            '총 ' + "$total_cnt" + '명',
+            '총 ' + "$totalCnt" + '명',
           ),
           SizedBox(height: 4.0),
           Row(
@@ -78,7 +79,7 @@ class _DeathViewState extends State<DeathView> {
                 height: 10,
               ),
               Text(
-                "$diff_cnt",
+                "$diffCnt",
                 style: TextStyle(
                   color: Colors.redAccent,
                 ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// ignore: must_be_immutable
 class ClearView extends StatefulWidget {
   String? total; //총 격리자 수
   int? diff; //변동 수
@@ -13,9 +14,9 @@ class ClearView extends StatefulWidget {
 }
 
 class _ClearViewState extends State<ClearView> {
-  String? total_cnt;
-  int? diff_cnt;
-  int? real_cnt;
+  String? totalCnt;
+  int? diffCnt;
+  int? realCnt;
   @override
   void initState() {
     updateData(widget.total, widget.diff, widget.real);
@@ -24,9 +25,9 @@ class _ClearViewState extends State<ClearView> {
   }
 
   void updateData(dynamic total, dynamic diff, dynamic real) {
-    total_cnt = total;
-    diff_cnt = diff;
-    real_cnt = real;
+    totalCnt = total;
+    diffCnt = diff;
+    realCnt = real;
   }
 
   @override
@@ -63,7 +64,7 @@ class _ClearViewState extends State<ClearView> {
             height: 15,
           ),
           Text(
-            '총 ' + "$total_cnt" + '명',
+            '총 ' + "$totalCnt" + '명',
           ),
           SizedBox(height: 4.0),
           Row(
@@ -81,7 +82,7 @@ class _ClearViewState extends State<ClearView> {
                 height: 10,
               ),
               Text(
-                "$diff_cnt",
+                "$diffCnt",
                 style: TextStyle(
                   color: Colors.green,
                 ),
@@ -105,7 +106,7 @@ class _ClearViewState extends State<ClearView> {
                 ),
               ),
               Text(
-                '$real_cnt',
+                '$realCnt',
                 style: TextStyle(
                   color: Colors.redAccent,
                 ),

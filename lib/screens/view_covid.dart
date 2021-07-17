@@ -9,10 +9,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ViewCovidScreen extends StatefulWidget {
-  ViewCovidScreen({this.covidData_yesterday, this.covidData_today});
+  ViewCovidScreen({this.covidDataYesterday, this.covidDataToday});
 
-  final dynamic covidData_today;
-  final dynamic covidData_yesterday;
+  final dynamic covidDataToday;
+  final dynamic covidDataYesterday;
 
   @override
   _ViewCovidScreenState createState() => _ViewCovidScreenState();
@@ -24,11 +24,25 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   GetCovidData data = GetCovidData();
   DateTime? selectedDate;
   dynamic day;
+
   @override
   void initState() {
-    update.updateData(widget.covidData_today, widget.covidData_yesterday);
-    day = update.update_time;
+    update.updateData(widget.covidDataToday, widget.covidDataYesterday);
+    day = update.updateTime;
     super.initState();
+  }
+
+  void move() async {
+    dynamic pickDate = await selectDate(context);
+    pickDate = pickDate.add(Duration(days: 1));
+    Navigator.pop(context, '/');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            Loading(todayDate: pickDate, yesterdayDate: pickDate),
+      ),
+    );
   }
 
   Future<DateTime?> selectDate(BuildContext context) async {
@@ -40,10 +54,8 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
     );
     if (picked != null && picked != selectedDate) {
       setState(() => selectedDate = picked);
-      print(picked);
       return (picked);
     } else {
-      print(picked);
       return (picked);
     }
   }
@@ -66,16 +78,8 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
         ),
         leading: (IconButton(
           icon: Icon(Icons.calendar_today),
-          onPressed: () async {
-            dynamic pickDate = await selectDate(context);
-            pickDate = pickDate.add(Duration(days: 1));
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    Loading(todayDate: pickDate, yesterdayDate: pickDate),
-              ),
-            );
+          onPressed: () {
+            move();
           },
           iconSize: 30.0,
         )),
@@ -86,19 +90,18 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              DecideView(
-                  total: update.today_decideCnt, diff: update.diff_decide),
+              DecideView(total: update.todayDecideCnt, diff: update.diffDecide),
               SizedBox(
                 height: 10,
               ),
               ClearView(
-                  total: update.today_clearCnt,
-                  diff: update.diff_clear,
-                  real: update.real_decide),
+                  total: update.todayClearCnt,
+                  diff: update.diffClear,
+                  real: update.realDecide),
               SizedBox(
                 height: 10,
               ),
-              DeathView(total: update.today_deathCnt, diff: update.diff_death),
+              DeathView(total: update.todayDeathCnt, diff: update.diffDeath),
               SizedBox(
                 height: 280,
                 width: 200,
