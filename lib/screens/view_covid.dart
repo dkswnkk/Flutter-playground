@@ -7,6 +7,8 @@ import 'package:covid19_kr/views/decideView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:transition/transition.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewCovidScreen extends StatefulWidget {
   ViewCovidScreen({this.covidDataYesterday, this.covidDataToday});
@@ -24,39 +26,53 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   GetCovidData data = GetCovidData();
   DateTime? selectedDate;
   dynamic day;
+  DateTime? initalDate;
 
   @override
   void initState() {
     update.updateData(widget.covidDataToday, widget.covidDataYesterday);
     day = update.updateTime;
+    initalDate = DateTime.parse(day);
     super.initState();
   }
 
   void move() async {
     dynamic pickDate = await selectDate(context);
+    if (pickDate == null) return null;
+
     pickDate = pickDate.add(Duration(days: 1));
-    Navigator.pop(context, '/');
+    Navigator.pop(context);
+
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) =>
-            Loading(todayDate: pickDate, yesterdayDate: pickDate),
-      ),
-    );
+        context,
+        Transition(
+            child: Loading(todayDate: pickDate, yesterdayDate: pickDate),
+            transitionEffect: TransitionEffect.FADE));
+  }
+
+  _goURL() async {
+    const url = 'http://ncov.mohw.go.kr/bdBoardList_Real.do';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   Future<DateTime?> selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: initalDate!,
       firstDate: new DateTime(2020),
       lastDate: DateTime.now(),
     );
     if (picked != null && picked != selectedDate) {
-      setState(() => selectedDate = picked);
+      setState(
+        () => selectedDate = picked,
+      );
       return (picked);
     } else {
-      return (picked);
+      return (null);
     }
   }
 
@@ -102,14 +118,19 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
                 height: 10,
               ),
               DeathView(total: update.todayDeathCnt, diff: update.diffDeath),
-              SizedBox(
-                height: 280,
-                width: 200,
-                child: SvgPicture.asset(
-                  'images/covid-19.svg',
+              TextButton(
+                child: SizedBox(
+                  height: 250,
                   width: 200,
-                  height: 200,
+                  child: SvgPicture.asset(
+                    'images/covid-19.svg',
+                    width: 200,
+                    height: 200,
+                  ),
                 ),
+                onPressed: () {
+                  _goURL();
+                },
               ),
             ],
           ),

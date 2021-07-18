@@ -22,11 +22,11 @@ class UpdateData {
     todayClearCnt =
         covidDataToday['response']['body']['items']['item'][0]['clearCnt'];
     yesterdayDeathCnt =
-        covidDataYesterday['response']['body']['items']['item'][0]['deathCnt'];
+        covidDataYesterday['response']['body']['items']['item'][1]['deathCnt'];
     yesterdayDecideCnt =
-        covidDataYesterday['response']['body']['items']['item'][0]['decideCnt'];
+        covidDataYesterday['response']['body']['items']['item'][1]['decideCnt'];
     yesterdayClearCnt =
-        covidDataYesterday['response']['body']['items']['item'][0]['clearCnt'];
+        covidDataYesterday['response']['body']['items']['item'][1]['clearCnt'];
 
     diffDeath =
         int.parse(todayDeathCnt!) - int.parse(yesterdayDeathCnt!); //변동 사망자 수

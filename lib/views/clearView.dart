@@ -45,87 +45,90 @@ class _ClearViewState extends State<ClearView> {
           )
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "격리해제 수",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          primary: Colors.black87, // foreground
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "격리해제 수",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            '총 ' + "$totalCnt" + '명',
-          ),
-          SizedBox(height: 4.0),
-          Row(
-            children: [
-              Text(
-                "오늘 ",
-                style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  fontSize: 16,
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              '총 ' + "$totalCnt" + '명',
+            ),
+            SizedBox(height: 4.0),
+            Row(
+              children: [
+                Text(
+                  "오늘 ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w200,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              SvgPicture.asset(
-                'images/Increase_Positive.svg',
-                width: 10,
-                height: 10,
-              ),
-              Text(
-                "$diffCnt",
-                style: TextStyle(
-                  color: Colors.green,
+                SvgPicture.asset(
+                  'images/Increase_Positive.svg',
+                  width: 10,
+                  height: 10,
                 ),
-              ),
-              Text(
-                "명 해제 ",
-                style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  fontSize: 16,
+                Text(
+                  "$diffCnt",
+                  style: TextStyle(
+                    color: Colors.green,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 10.0),
-          Row(
-            children: [
-              Text(
-                '남은 확진자 ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                Text(
+                  "명 해제 ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w200,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              Text(
-                '$realCnt',
-                style: TextStyle(
-                  color: Colors.redAccent,
+              ],
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              children: [
+                Text(
+                  '남은 확진자 ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                '명',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                Text(
+                  '$realCnt',
+                  style: TextStyle(
+                    color: Colors.redAccent,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-        ],
+                Text(
+                  '명',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 8,
+            ),
+          ],
+        ),
+        onPressed: () {},
       ),
     );
   }

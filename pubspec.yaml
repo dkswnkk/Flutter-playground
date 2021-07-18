@@ -26,7 +26,9 @@ dependencies:
   http: ^0.13.3
   intl: ^0.17.0  #date 타입을 포맷하기 위함.
   xml2json: ^5.3.1 # xml -> json
-  flutter_svg: ^0.22.0
+  flutter_svg: ^0.22.0 #svg파일 사용하기
+  url_launcher: #url 띄우기
+  transition :  #애니메이션 사용
 # lcalizations package
   flutter_localizations:
      sdk: flutter
