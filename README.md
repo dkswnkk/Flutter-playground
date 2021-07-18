@@ -16,15 +16,9 @@ What Used
 Sample Screens
 --
 
-|screens|gif|
-|-----|-----|
-|<img width="475" alt="스크린샷 2021-07-18 오전 3 47 08" src="https://user-images.githubusercontent.com/74492426/126046807-13e98007-6aee-45f4-b0e2-5f1a74863ffa.png">|![Simulator Screen Recording - iPhone 12 Pro Max - 2021-07-18 at 03 41 47](https://user-images.githubusercontent.com/74492426/126047044-79570d02-8eb0-4f56-9462-a34a8bf40ca1.gif)|
-
-
-
-
-
-
+|main|site|gif|
+|-----|-----|-----|
+|<img width="475" alt="스크린샷 2021-07-18 오전 3 47 08" src="https://user-images.githubusercontent.com/74492426/126046807-13e98007-6aee-45f4-b0e2-5f1a74863ffa.png">|<img width="475" alt="스크린샷 2021-07-18 오후 4 23 52" src="https://user-images.githubusercontent.com/74492426/126059242-2a13191a-8ff5-42c9-a863-6e96efa118bb.png">|![Simulator Screen Recording - iPhone 12 Pro Max - 2021-07-18 at 16 22 27](https://user-images.githubusercontent.com/74492426/126059211-461e1b4f-c93b-4ae5-927f-161b322db184.gif)|
 
 
 
@@ -35,7 +29,7 @@ To Do List
 - [x] 변동데이터 구현하기 (api에서 지원 x)
 - [x] UI 구현 
 >2021.07.17
-- [x] 날짜 선택시 해당 날의 코로나 정보 불러오기 (api 문제로 인해 20210118 ~ 20210420 날짜 사이의 값을 받아오지 못함.) 
+- [x] 날짜 선택시 해당 날의 코로나 정보 불러오기 
 >2021.07.18
 - [x] 새 날짜 갱신마다 이전 페이지 스택 제거하여 안정성 확보.
 - [x] 날짜 선택 취소 시 갱신 되지 않도록 하여 효율성 up.
@@ -43,6 +37,7 @@ To Do List
 - [x] 아래 이미지 클릭시 [기관사이트](http://ncov.mohw.go.kr/) 띄우기.
 - [x] 애니메이션 추가하여 자연스럽게 자연스럽게 화면 전환.
 - [x] 날짜선택시 해당 날짜와 이전날짜만 데이터를 불러와 로딩속도 향상. 
+
 >업데이트 할 것.
 - [ ] 확진자 수, 격리해제 수, 사망자 수 클릭시 각자 일주일치 데이터 그래프로 출력하기.
 
