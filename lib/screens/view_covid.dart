@@ -62,16 +62,30 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
 
   void move() async {
     dynamic pickDate = await selectDate(context);
-    if (pickDate == null) return null;
+    if (pickDate == null) {
+      return null;
+    } else if (pickDate.day == DateTime.now().day) {
+      if (DateTime.now().hour > 10) {
+        Navigator.pop(context);
+        Navigator.push(
+            context,
+            Transition(
+                child: Loading(todayDate: pickDate, yesterdayDate: pickDate),
+                transitionEffect: TransitionEffect.FADE));
+      } else {
+        showToast("아직 오늘의 코로나 정보가 집계되지 않았습니다..");
+        return null;
+      }
+    } else {
+      pickDate = pickDate.add(Duration(days: 1));
+      Navigator.pop(context);
 
-    pickDate = pickDate.add(Duration(days: 1));
-    Navigator.pop(context);
-
-    Navigator.push(
-        context,
-        Transition(
-            child: Loading(todayDate: pickDate, yesterdayDate: pickDate),
-            transitionEffect: TransitionEffect.FADE));
+      Navigator.push(
+          context,
+          Transition(
+              child: Loading(todayDate: pickDate, yesterdayDate: pickDate),
+              transitionEffect: TransitionEffect.FADE));
+    }
   }
 
   _goURL() async {
