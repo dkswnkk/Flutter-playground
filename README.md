@@ -1,3 +1,4 @@
+<img width="1029" alt="스크린샷 2021-07-20 오전 3 31 43" src="https://user-images.githubusercontent.com/74492426/126209409-6ce488bf-cb7a-4e64-9a44-3fee33e71b6b.png">
 
 
 
@@ -43,6 +44,9 @@ To Do List
 
 >2021.07.20
 - [x] 오늘 코로나 정보가 집계되지 않았는데 오늘의 데이터를 불러올 시 앱이 먹통이 되던 현상 해결.
+- [x] api 운영계정 등록: 일일트래픽 제한없음, 라이센스 이용허락범위 제한 없음 
+<img width="1029" alt="스크린샷 2021-07-20 오전 3 33 08" src="https://user-images.githubusercontent.com/74492426/126209583-cbf6b767-2fe5-47ae-a282-7c225c384f8f.png">
+
 
 >업데이트 할 것.
 - [ ] 앱스토어 출시하기.
