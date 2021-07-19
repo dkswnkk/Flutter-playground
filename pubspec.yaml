@@ -29,6 +29,7 @@ dependencies:
   flutter_svg: ^0.22.0 #svg파일 사용하기
   url_launcher: #url 띄우기
   transition :  #애니메이션 사용
+  fluttertoast: ^8.0.7 
 # lcalizations package
   flutter_localizations:
      sdk: flutter

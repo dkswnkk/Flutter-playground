@@ -7,6 +7,7 @@ import 'package:covid19_kr/views/decideView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:transition/transition.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,8 +33,31 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   void initState() {
     update.updateData(widget.covidDataToday, widget.covidDataYesterday);
     day = update.updateTime;
+    String showDay = day[0] +
+        day[1] +
+        day[2] +
+        day[3] +
+        '년 ' +
+        day[4] +
+        day[5] +
+        '월 ' +
+        day[6] +
+        day[7] +
+        '일 ';
+    showToast("$showDay정보를 갱신했습니다.");
+
     initalDate = DateTime.parse(day);
+
     super.initState();
+  }
+
+  void showToast(String message) {
+    Fluttertoast.showToast(
+        msg: message,
+        backgroundColor: Colors.grey,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 2);
   }
 
   void move() async {
