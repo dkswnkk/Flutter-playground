@@ -18,7 +18,7 @@ Sample Screens
 
 |main|site|gif|
 |-----|-----|-----|
-|<img width="475" alt="스크린샷 2021-07-18 오전 3 47 08" src="https://user-images.githubusercontent.com/74492426/126046807-13e98007-6aee-45f4-b0e2-5f1a74863ffa.png">|<img width="475" alt="스크린샷 2021-07-18 오후 4 23 52" src="https://user-images.githubusercontent.com/74492426/126059242-2a13191a-8ff5-42c9-a863-6e96efa118bb.png">|![Simulator Screen Recording - iPhone 12 Pro Max - 2021-07-18 at 16 22 27](https://user-images.githubusercontent.com/74492426/126059211-461e1b4f-c93b-4ae5-927f-161b322db184.gif)|
+|<img width="475" alt="스크린샷 2021-07-18 오전 3 47 08" src="https://user-images.githubusercontent.com/74492426/126046807-13e98007-6aee-45f4-b0e2-5f1a74863ffa.png">|<img width="475" alt="스크린샷 2021-07-18 오후 4 23 52" src="https://user-images.githubusercontent.com/74492426/126059242-2a13191a-8ff5-42c9-a863-6e96efa118bb.png">|![Simulator Screen Recording - iPhone 12 Pro Max - 2021-07-19 at 20 50 43](https://user-images.githubusercontent.com/74492426/126155768-79449695-a432-4be8-81c4-ce9055e349e5.gif)|
 
 
 
@@ -37,8 +37,11 @@ To Do List
 - [x] 아래 이미지 클릭시 [기관사이트](http://ncov.mohw.go.kr/) 띄우기.
 - [x] 애니메이션 추가하여 자연스럽게 자연스럽게 화면 전환.
 - [x] 날짜선택시 해당 날짜와 이전날짜만 데이터를 불러와 로딩속도 향상. 
+>2021.07.19
+- [x] 날짜갱신시 메세지 출력.
+- [x] 구글플레이 앱 제출 [검토중].
 
 >업데이트 할 것.
-- [ ] 확진자 수, 격리해제 수, 사망자 수 클릭시 각자 일주일치 데이터 그래프로 출력하기.
+- [ ] 앱스토어 출시하기.
 
 
