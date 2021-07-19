@@ -1,7 +1,3 @@
-<img width="1029" alt="스크린샷 2021-07-20 오전 3 31 43" src="https://user-images.githubusercontent.com/74492426/126209409-6ce488bf-cb7a-4e64-9a44-3fee33e71b6b.png">
-
-
-
 
 한국의 코로나 현황을 알려주는 앱
 ==
