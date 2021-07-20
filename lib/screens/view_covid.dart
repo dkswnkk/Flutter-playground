@@ -53,11 +53,11 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
 
   void showToast(String message) {
     Fluttertoast.showToast(
-        msg: message,
-        backgroundColor: Colors.grey,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 2);
+      msg: message,
+      backgroundColor: Colors.grey,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+    );
   }
 
   void move() async {
@@ -103,7 +103,7 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: initalDate!,
-      firstDate: new DateTime(2020),
+      firstDate: DateTime(2020, 2, 8),
       lastDate: DateTime.now(),
     );
     if (picked != null && picked != selectedDate) {
