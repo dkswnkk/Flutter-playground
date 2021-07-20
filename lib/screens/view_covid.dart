@@ -65,12 +65,14 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
     if (pickDate == null) {
       return null;
     } else if (pickDate.day == DateTime.now().day) {
-      if (DateTime.now().hour > 10) {
+      if (DateTime.now().hour >= 10) {
         Navigator.pop(context);
         Navigator.push(
             context,
             Transition(
-                child: Loading(todayDate: pickDate, yesterdayDate: pickDate),
+                child: Loading(
+                    todayDate: pickDate.add(Duration(hours: 10)),
+                    yesterdayDate: pickDate.add(Duration(hours: 10))),
                 transitionEffect: TransitionEffect.FADE));
       } else {
         showToast("아직 오늘의 코로나 정보가 집계되지 않았습니다..");
@@ -118,17 +120,20 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          children: [
-            Text('한국 코로나 현황'),
-            Text(
-              "$day",
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 16,
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
+          child: Column(
+            children: [
+              Text('한국 코로나 현황'),
+              Text(
+                "$day",
+                style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 16,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         leading: (IconButton(
           icon: Icon(Icons.calendar_today),
