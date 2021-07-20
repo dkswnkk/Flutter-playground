@@ -120,20 +120,19 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(10.0, 0, 0, 0),
-          child: Column(
-            children: [
-              Text('한국 코로나 현황'),
-              Text(
-                "$day",
-                style: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 16,
-                ),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('한국 코로나 현황'),
+            Text(
+              "$day",
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 16,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         leading: (IconButton(
           icon: Icon(Icons.calendar_today),
@@ -142,6 +141,7 @@ class _ViewCovidScreenState extends State<ViewCovidScreen> {
           },
           iconSize: 30.0,
         )),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
