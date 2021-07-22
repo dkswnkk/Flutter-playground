@@ -5,9 +5,9 @@
 Information
 --
 
-|코로나 한국|what used|Download|
+|플로나|what used|Download|
 |-|-|----|
-|<img width="59" alt="스크린샷 2021-07-16 오전 2 55 25" src="https://user-images.githubusercontent.com/74492426/125834839-3fe552f7-dbe4-4e6b-abe6-82e770701815.png">|- 코로나 정보: [공공기관 API](https://www.data.go.kr/index.do) 사용<br> - 이미지 정보: 무료로 제공하는 이미지 및 위키피디아 이미지 사용|[구글플레이(안드로이드)](https://play.google.com/store/apps/details?id=com.dkswnzz.covid19_kr)|
+|<img width="59" alt="스크린샷 2021-07-16 오전 2 55 25" src="https://user-images.githubusercontent.com/74492426/125834839-3fe552f7-dbe4-4e6b-abe6-82e770701815.png">|- 코로나 정보: [공공기관 API](https://www.data.go.kr/index.do) 사용<br> - 이미지 정보: 무료로 제공하는 이미지 및 위키피디아 이미지 사용|[구글플레이(안드로이드)](https://play.google.com/store/apps/details?id=com.flona.covid19_kr)|
 
 
 Sample Screens
