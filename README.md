@@ -46,6 +46,8 @@ To Do List
 - [x] 안드로이드는 앱바가 왼쪽에 고정되던 문제 해결. 
 - [x] Api 정보 미 제공으로 인한 날짜 최초 선택일을 2020, 2, 8 으로 지정
 
+>2021.07.27
+- [x] 구글플레이 앱 업로드 완료. [다운로드](https://play.google.com/store/apps/details?id=com.flona.covid19_kr)
 >업데이트 할 것.
 - [ ] 앱스토어 출시하기.
 
